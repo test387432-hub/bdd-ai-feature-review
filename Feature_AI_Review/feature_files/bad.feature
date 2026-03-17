@@ -1,6 +1,6 @@
 Feature: login
 Background:
-When user opens login page
+When user opens login pagedsf
 Given user enters username
 Then user enters password
 
