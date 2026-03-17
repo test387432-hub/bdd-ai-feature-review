@@ -2,7 +2,7 @@ Feature: login
 Background:
 When user opens login page
 Given user enters username
-And user enters password
+Then user enters password
 
 
 Scenario: Login test
