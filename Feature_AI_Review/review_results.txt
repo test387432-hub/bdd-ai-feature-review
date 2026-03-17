@@ -1,0 +1,124 @@
+
+
+=================================
+AI FEATURE REVIEW REPORT
+File: example.feature
+=================================
+ Issues found:
+1. Violation of RULE 1: Feature Declaration
+- The first line of the file does not follow the format: "Feature: <Feature Name>". Instead, it is "Feature: test".
+
+Suggested improvement:
+Replace "Feature: test" with "Feature: Test Feature" (or any other descriptive name that follows the rule).
+
+2. Violation of RULE 4: Scenario Naming Convention
+- The Scenario line does not follow the exact format: "Scenario: TC_<number> <scenario description>". Instead, it is "Scenario: TC_12345 test".
+
+Suggested improvement:
+Replace "Scenario: TC_12345 test" with "Scenario: TC_12345 Test Scenario" (or any other descriptive name that follows the rule).
+
+
+=================================
+AI FEATURE REVIEW REPORT
+File: sample.feature
+=================================
+ Issues found:
+
+1. RULE 1 VIOLATION: The Feature declaration line does not follow the format: "Feature: <Feature Name>". The correct format should be: Feature: test
+2. RULE 2 VIOLATION: The line immediately after the Feature declaration does not contain a description explaining the purpose of the feature.
+3. RULE 3 VIOLATIONS:
+   - The first step in the Background section does not start with the keyword: Given
+   - Steps after the first step in the Background section do not start with: And
+
+Suggested improvements:
+
+- Correct the Feature declaration: Feature: test
+- Add a feature description: This feature describes the test functionality.
+- Correct the Background steps: Given I am a tester And I am a tester pro
+
+
+=================================
+AI FEATURE REVIEW REPORT
+File: test.feature
+=================================
+ Issues found:
+
+1. RULE 1: Feature Declaration
+   - The first line of the file does not follow the format: "Feature: <Feature Name>". The correct format should be "Feature: test Feature".
+
+2. RULE 4: Scenario Naming Convention
+   - The Scenario "TC_12345 test" does not follow the exact format: "Scenario: TC_<number> <scenario description>". The correct format should be "Scenario: TC_12345 <test>".
+
+Suggested improvements:
+
+- Correct the Feature declaration by adding the missing space between "test" and "Feature".
+- Update the Scenario name to follow the correct naming convention: "Scenario: TC_12345 <test>" where "<test>" is replaced with a descriptive name for the scenario.
+
+
+=================================
+AI FEATURE REVIEW REPORT
+File: example.feature
+=================================
+ Issues found:
+
+1. RULE 1: Feature Declaration - The first line of the file does not follow the format: "Feature: <Feature Name>". Instead, it is "Feature: test".
+
+2. RULE 4: Scenario Naming Convention - The Scenario line does not follow the exact format: "Scenario: TC_<number> <scenario description>". Instead, it is "Scenario: TC_12345 test". The format should be "Scenario: TC_<number> <space> <scenario description>".
+
+Suggested improvements:
+
+1. Change the first line to "Feature: Login Test"
+2. Change the Scenario line to "Scenario: TC_12345 Verify Test" (or any other suitable scenario description)
+
+
+=================================
+AI FEATURE REVIEW REPORT
+File: sample.feature
+=================================
+ Issues found:
+
+1. RULE 1 VIOLATION: The Feature declaration is incorrect. The line should start with the keyword "Feature:" followed by a space and the feature name ending with "Feature". Instead, it is "Feature test".
+
+Suggested improvement: Change the first line to "Feature: Test Feature".
+
+2. RULE 2 VIOLATION: The line immediately after the Feature declaration is missing a description explaining the purpose of the feature.
+
+Suggested improvement: Add a description explaining the purpose of the test feature. For example, "This feature verifies certain test functionality".
+
+3. RULE 3 VIOLATION: In the Background section, the steps do not follow the given-when-then format. The first step should start with "Given", all steps after the first step should start with "And". Instead, the steps are "when I am tester" and "And i am tester pro".
+
+Suggested improvement: Change the steps in the Background section to follow the given-when-then format. For example, "Given I am a tester" and "And I am a tester pro".
+
+4. RULE 4 VIOLATION: The Scenario naming convention is incorrect. The line should start with "Scenario:", immediately after "Scenario:" there must be a space, "TC_" must be followed by one or more digits (0-9), after the test case ID there must be a space followed by the scenario description. Instead, it is "Scenario: TC_12345 test".
+
+Suggested improvement: Change the Scenario line to "Scenario: TC_12345 Verify test functionality".
+
+After making these changes, the corrected feature file would look like this:
+
+Feature: Test Feature
+This feature verifies certain test functionality.
+
+Background:
+Given I am a tester
+And I am a tester pro
+
+Scenario: TC_12345 Verify test functionality
+
+No issues found after these changes.
+
+
+=================================
+AI FEATURE REVIEW REPORT
+File: test.feature
+=================================
+ Issues found:
+
+1. The first line of the file does not follow the specified format for Feature declaration:
+    - The line should start with the keyword "Feature:".
+
+Suggested improvements:
+
+Change the first line of the file to:
+
+Feature: test Feature
+This is a sample test
