@@ -22,7 +22,7 @@ jobs:
         run: pip install requests
 
       - name: Run AI Reviewer
-        run: python ai_review.py > review_output.txt
+        run: python Feature_AI_Review/ai_review.py > review_output.txt
 
       - name: Post PR Comment
         uses: actions/github-script@v7
