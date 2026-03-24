@@ -2,38 +2,68 @@ name: AI Feature Review
 
 on:
   pull_request:
-    paths:
-      - "**.feature"
 
 jobs:
-  review-feature-files:
+  review-changed-features:
     runs-on: ubuntu-latest
 
     steps:
+      # 1️⃣ Checkout repository
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
+      # 2️⃣ Setup Python
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
 
+      # 3️⃣ Setup Node.js (required for Copilot CLI)
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      # 4️⃣ Install dependencies
       - name: Install dependencies
-        run: pip install requests
+        run: |
+          pip install requests
+          npm install -g @githubnext/github-copilot-cli
 
+      # 5️⃣ Authenticate Copilot CLI
+      - name: Authenticate Copilot CLI
+        run: gh auth login --with-token < ${{ secrets.GH_TOKEN }}
+
+      # 6️⃣ Get changed feature files
+      - name: Get changed feature files
+        id: changed_files
+        run: |
+          files=$(gh pr diff ${{ github.event.pull_request.number }} --name-only | grep '\.feature$' || true)
+          echo "changed_files<<EOF" >> $GITHUB_OUTPUT
+          echo "$files" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      # 7️⃣ Run AI Reviewer only on changed feature files
       - name: Run AI Reviewer
-        run: python Feature_AI_Review/ai_review.py > review_output.txt
+        if: steps.changed_files.outputs.changed_files != ''
+        run: |
+          for file in ${{ steps.changed_files.outputs.changed_files }}
+          do
+            echo "Reviewing $file..."
+            python ai_review.py "$file" >> review_output.txt
+          done
 
+      # 8️⃣ Post PR comment
       - name: Post PR Comment
+        if: steps.changed_files.outputs.changed_files != ''
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require('fs');
             const body = fs.readFileSync('review_output.txt', 'utf8');
-
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: "🤖 **AI Feature Review Report**\n\n" + body
+              body: "🤖 **AI Feature Review Report for changed files**\n\n" + body
             })
